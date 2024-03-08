@@ -1,71 +1,130 @@
 <!DOCTYPE html>
-<!-- 
-Tutorial: https://www.youtube.com/watch?v=zxxB9SFh9p4
--->
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vamos sair comigo?</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <title>Adrielly</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div id="conteudo">
-        <h2>Aceita sair comigo?</h2>
-        <div style="margin: auto;width: 170px;">
-            <button style="position: fixed;display: block;" class="btn" onclick="sim()">SIM</button>
-            <button class="btn" onclick="desvia(this)" onmouseover="desvia(this)" style="position: absolute;">NÃO</button>
+    <h1 id="mainText" style="text-align: center; margin-top: 8rem;">Aperte na rosa</h1>
+    <div class="container">
+        <div class="glass"></div>
+        <div class="thorns">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="glow"></div>
+        <div class="rose-leaves">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="rose-petals">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="sparkles">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" style="font-size: 24px; text-align: left;">&times;</span>
+          <p>Minha linda,</p>
+          <p>
+            Gostaria de desejar um feliz Dia da Mulher para você que é tão especial para mim.
+            Admiro muito o coração e o caráter que você tem, em ser essa mulher tão dedicada e tão comprometida com sua família, estudos e com seus amigos.
+          </p>
+          <p>            Peço que Deus continue olhando sobre nós e que me mantenha pertinho de você enquanto isso.
+        </p>
+          <p>Um beijo e aproveite a viagem.</p>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById('myModal');
+var closeModal = document.getElementsByClassName('close')[0];
+var roseContainer = document.querySelector('.container');
+var mainText = document.getElementById('mainText');
+
+roseContainer.addEventListener('click', function () {
+    // Adiciona a classe 'fade-in' para o modal e 'hidden' para a rosa
+    modal.style.display = 'block'; // Certifique-se de que o modal está visível
+    modal.classList.add('fade-in');
+    roseContainer.classList.add('hidden');
+
+    // Altera o texto com um pequeno delay para sincronizar com a animação
+    setTimeout(function () {
+        mainText.innerText = 'Feliz dia da mulher ❤️';
+    }, 500); // Tempo em milissegundos
+});
+
+closeModal.onclick = function () {
+    // Remove a classe 'fade-in' do modal e 'hidden' da rosa
+    modal.classList.remove('fade-in');
+
+    // Aguarde a conclusão da animação antes de remover a classe 'fade-in'
+    setTimeout(function () {
+        modal.style.display = 'none';
+        roseContainer.classList.remove('hidden');
+
+        // Restaura o texto com um pequeno delay para sincronizar com a animação
+        setTimeout(function () {
+            mainText.innerText = 'Clique na rosa';
+        }, 500); // Tempo em milissegundos
+    }, 500); // Tempo em milissegundos
+};
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        // Remove a classe 'fade-in' do modal e 'hidden' da rosa
+        modal.classList.remove('fade-in');
+
+        // Aguarde a conclusão da animação antes de remover a classe 'fade-in'
+        setTimeout(function () {
+            modal.style.display = 'none';
+            roseContainer.classList.remove('hidden');
+
+            // Restaura o texto com um pequeno delay para sincronizar com a animação
+            setTimeout(function () {
+                mainText.innerText = 'Clique na rosa';
+            }, 500); // Tempo em milissegundos
+        }, 500); // Tempo em milissegundos
+    }
+};
+
+window.onload = function () {
+    modal.style.display = 'none';
+    roseContainer.classList.remove('hidden');
+    mainText.innerText = 'Clique na rosa';
+};
+
+    </script>
+    
+      
+      
+      
 </body>
-<style>
-    #conteudo {
-        background: #ff7a7a;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding: 10px;
-        text-align: center;
-        font-family: sans-serif;
-    }
-
-    .btn {
-        background: black;
-        color: white;
-        border: none;
-        padding: 10px;
-        width: 80px;
-        border-radius: 5px;
-    }
-</style>
-
-<script>
-    function sim() {
-        alert("Você aceitou sair comigo! :)");
-        // redireciona para um URL após clicar no SIM
-        location.href = "https://www.youtube.com/watch?v=8xg3vE8Ie_E&ab_channel=TaylorSwiftVEVO";
-    }
-
-    function desvia(btn) {
-        // btn declarado na função
-        btn.style.position = 'absolute';
-        btn.style.bottom = geraPosicao(10, 90);
-        btn.style.left = geraPosicao(10, 90);
-        console.log('opa, desviei...');
-    }
-
-    function geraPosicao(min, max) {
-        return (Math.random() * (max - min) + min) + "%";
-    }
-
-</script>
-
 </html>
